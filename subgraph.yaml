@@ -1,26 +1,24 @@
-specVersion: 0.0.1
+specVersion: 0.0.4
 schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum
-    name: Token
+    name: alpha
     network: matic
     source:
-      address: "0xE93C4431494B45115ea656274ea75B987f541B17"
-      abi: Token
+      address: "0x0D64A856beb63b3f4FC5A98Eca51f757ffdA0BEd"
+      startBlock: 20173738
+      abi: Pair
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.5
+      apiVersion: 0.0.6
       language: wasm/assemblyscript
       entities:
-        - ProxyOwnerUpdate
-        - ProxyUpdated
+        - Day
       abis:
-        - name: Token
-          file: ./abis/Token.json
+        - name: Pair
+          file: ./abis/Pair.json
       eventHandlers:
-        - event: ProxyOwnerUpdate(address,address)
-          handler: handleProxyOwnerUpdate
-        - event: ProxyUpdated(indexed address,indexed address)
-          handler: handleProxyUpdated
-      file: ./src/token.ts
+        - event: Swap(indexed address,uint256,uint256,uint256,uint256,indexed address)
+          handler: handleSwap
+      file: ./src/swap.ts

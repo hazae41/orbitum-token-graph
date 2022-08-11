@@ -1,6 +1,9 @@
-type ExampleEntity @entity {
-  id: ID!
-  count: BigInt!
-  _new: Bytes! # address
-  _old: Bytes! # address
+type Day @entity {
+	id: ID!
+
+	reserveAlphaMATIC: BigInt!
+	reserveAlphaORBTM: BigInt!
+
+	reserveBetaMATIC: BigInt!
+	reserveBetaUSDC: BigInt!
 }
